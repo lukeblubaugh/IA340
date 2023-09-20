@@ -62,3 +62,28 @@ where p_name = 'p1'
 select * from professor
 
 --You must update the course table first because p1 cannot be deleted while teaching a course.
+
+--2.7
+select * from enroll
+
+--2.8
+select c_number, count(*) as num_stu from enroll
+group by c_number
+
+order by num_stu desc
+
+limit 1
+
+--2.9
+select professor.p_name , course.c_name from professor
+inner join course on professor.p_email = course.p_email
+
+--2.10
+select professor.p_name, count(course.c_number) as courses_taught from professor
+inner join course on professor.p_email = course.p_email
+
+group by professor.p_name
+
+order by courses_taught desc
+
+limit 1
